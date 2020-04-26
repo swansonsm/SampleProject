@@ -12,7 +12,7 @@ npm install
 npm run serve
 ```
 
-### Compiles and hot-reloads for development
+### Run the web app
 ```
 Navigate to http://localhost:8080/ in a Chrome browser window.
 
