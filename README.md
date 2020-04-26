@@ -1,6 +1,6 @@
 # Coding Challenge Sample Project
 
-This sample project was build using Vue.js. Please make sure to install Vue after downloading the repository.
+This simple web app was build using Vue.js. The following steps should allow you to run the application locally after downloading the repository. 
 
 ## Project setup
 ```
@@ -12,15 +12,12 @@ npm install
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Run the web app
 ```
-npm run build
+Navigate to http://localhost:8080/ in a Chrome browser window.
+
+Note that any modern browser should work but testing was limited to Chrome.
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Loading the sample data
+Please note that a copy of sample data is included in the project as assets.json. This will need to be manually loaded through the UI in the app.
