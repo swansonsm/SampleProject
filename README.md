@@ -1,4 +1,6 @@
-# app
+# Coding Challenge Sample Project
+
+This sample project was build using Vue.js. Please make sure to install Vue after downloading the repository.
 
 ## Project setup
 ```
