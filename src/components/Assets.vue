@@ -1,6 +1,14 @@
 <template>
   <div class="assets-container">
     <input type="text" v-model="searchName" name="search-name" placeholder="Search assets...">
+
+    <div class="row header">
+      <div class="col-id"> Asset ID </div>
+      <div class="col-name"> Name </div>
+      <div class="col-description"> Description </div>
+      <div class="col-status"> Status </div>
+    </div>
+
     <Asset v-for="asset in filteredAssets"
            :key="asset.assetId"
            v-bind:asset="asset"
@@ -50,10 +58,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .assets-container {
   width: 80%;
   margin: auto;
+}
+input {
+  width: 250px;
 }
 ul {
   list-style-type: none;
@@ -62,7 +73,29 @@ ul {
 li {
   margin: 0 10px;
 }
-a {
-  color: #42b983;
+.header div {
+  font-weight: bold;
+}
+.item div {
+  font-weight: normal;
+}
+.row {
+  width: 100%;
+  display: inline-flex;
+}
+.col-id {
+  width: 10%;
+  text-align: left;
+}
+.col-name {
+  width: 40%;
+  text-align: left;
+}
+.col-description {
+  width: 40%;
+  text-align: left;
+}
+.col-status {
+  width: 10%;
 }
 </style>

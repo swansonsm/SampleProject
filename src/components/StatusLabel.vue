@@ -48,7 +48,8 @@ export default {
 
 <style scoped>
 .label {
-  display: inline;
+  display: inline-block;
+  width: 60px;
   padding: 0.2em 0.6em 0.3em;
   font-size: 75%;
   font-weight: 700;

@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <h1>TwinThread Coding Challenge</h1>
-    <input type="file" id="dataUploader" @change="loadData">
+    <h2>TwinThread Coding Challenge</h2>
+    <div class="uploader-container">
+      <div v-show="assets.length === 0">Please upload the assets.json file from your computer: </div>
+      <input type="file" name="data-uploader" @change="loadData">
+    </div>
     <Assets v-if="assets.length > 0"
             v-bind:assets="assets"
             v-bind:asset-status="asset_status"

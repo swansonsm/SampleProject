@@ -1,10 +1,13 @@
 <template>
   <div class="row">
-    <span> {{ asset.assetId }} </span>
-    <span> {{ asset.name }} </span>
-    <span> {{ asset.description }} </span>
-    <StatusLabel v-bind:status="asset.status"
-                 v-bind:assetStatus="assetStatus"></StatusLabel>
+    <div class="col-id"> {{ asset.assetId }} </div>
+    <div class="col-name"> {{ asset.name }} </div>
+    <div class="col-description"> {{ asset.description }} </div>
+    <div class="col-status">
+      <StatusLabel v-bind:status="asset.status"
+                   v-bind:assetStatus="assetStatus"></StatusLabel>
+    </div>
+    
   </div>
 </template>
 
@@ -34,9 +37,4 @@ export default {
 </script>
 
 <style scoped>
-.row {
-  width: 100%;
-  display: inline-flex;
-  justify-content: space-between;
-}
 </style>
