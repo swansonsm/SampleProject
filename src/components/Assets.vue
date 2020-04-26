@@ -64,7 +64,6 @@ export default {
   computed: {
     filteredAssets() {
       let filteredList = this.filterAssetsByName();
-      console.log(this.searchClass);
       if (this.searchClass !== null) {
         filteredList = this.filterAssetsByClass(filteredList);
       }
@@ -98,19 +97,10 @@ export default {
     filterAssetsByClass(filteredList) {
       return filteredList.filter(asset => {
         return asset.classList.some(assetClass => {
-          //console.log(assetClass.name + " = " + this.searchClass.name);
           return assetClass.name == this.searchClass.name;
         });
       });
-    },
-    logAssets(className) {
-      console.log(className);
-      console.log(className.name);
-      console.log(this.getAssetsByClassName(className));
     }
-  },
-  mounted() {
-    console.log(this.classList);
   }
 };
 </script>
