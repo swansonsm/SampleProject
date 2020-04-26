@@ -12,5 +12,12 @@ npm install
 npm run serve
 ```
 
-### Loading the samnple data
+### Compiles and hot-reloads for development
+```
+Navigate to http://localhost:8080/ in a Chrome browser window.
+
+Note that any modern browser should work but testing was limited to Chrome.
+```
+
+### Loading the sample data
 Please note that a copy of sample data is included in the project as assets.json. This will need to be manually loaded through the UI in the app.
