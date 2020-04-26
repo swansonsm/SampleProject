@@ -1,12 +1,22 @@
 <template>
   <div class="assets-container">
-    <input type="text" v-model="searchName" name="search-name" placeholder="Search assets...">
-    <select v-model="searchClass">
-      <option selected="selected" :value="null">All</option>
-      <option v-for="classItem in classList"
-              :key="classItem.id"
-              :value="classItem">{{ classItem.name }}</option>
-    </select>
+    <div class="search-container">
+      <div class="search-item">
+        <label for="search-name">Search </label>
+        <input type="text" v-model="searchName" name="search-name" placeholder="Search assets by name...">
+      </div>
+      <div class="search-item">
+        <label for="search-name">Filter by any of the {{ classList.size }} class names: </label>
+        <select name="filter-class"
+                v-model="searchClass">
+          <option selected="selected"
+                  :value="null">All</option>
+          <option v-for="classItem in classList"
+                  :key="classItem.id"
+                  :value="classItem">{{ classItem.name }}</option>
+        </select>
+      </div>
+    </div>
 
     <div class="row header">
       <div class="col-id"> Asset ID </div>
@@ -108,7 +118,16 @@ export default {
 <style>
 .assets-container {
   width: 80%;
-  margin: auto;
+  margin: 12px auto;
+}
+.search-container {
+  margin: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.search-item {
+  padding: 6px;
 }
 input {
   width: 250px;
