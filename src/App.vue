@@ -3,7 +3,9 @@
     <h1>TwinThread Coding Challenge</h1>
     <input type="file" id="dataUploader" @change="loadData">
     <Assets v-if="assets.length > 0"
-            v-bind:assets="assets"/>
+            v-bind:assets="assets"
+            v-bind:asset-status="asset_status"
+            v-bind:data-type="dataType"/>
   </div>
 </template>
 

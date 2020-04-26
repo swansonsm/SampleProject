@@ -3,7 +3,9 @@
     <input type="text" v-model="searchName" name="search-name" placeholder="Search assets...">
     <Asset v-for="asset in filteredAssets"
            :key="asset.assetId"
-           v-bind:asset="asset"></Asset>
+           v-bind:asset="asset"
+           v-bind:asset-status="assetStatus"
+           v-bind:data-type="dataType"></Asset>
   </div>
 </template>
 
@@ -19,6 +21,14 @@ export default {
     assets: {
       type: Array,
       default: () => []
+    },
+    assetStatus: {
+      type: Object,
+      default: () => {}
+    },
+    dataType: {
+      type: Object,
+      default: () => {}
     }
   },
   data: function() {
