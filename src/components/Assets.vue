@@ -1,6 +1,12 @@
 <template>
   <div class="assets-container">
     <input type="text" v-model="searchName" name="search-name" placeholder="Search assets...">
+    <select v-model="searchClass">
+      <option selected="selected" :value="null">All</option>
+      <option v-for="classItem in classList"
+              :key="classItem.id"
+              :value="classItem">{{ classItem.name }}</option>
+    </select>
 
     <div class="row header">
       <div class="col-id"> Asset ID </div>
@@ -41,11 +47,36 @@ export default {
   },
   data: function() {
     return {
-      searchName: ""
+      searchName: "",
+      searchClass: null
     };
   },
   computed: {
     filteredAssets() {
+      let filteredList = this.filterAssetsByName();
+      console.log(this.searchClass);
+      if (this.searchClass !== null) {
+        filteredList = this.filterAssetsByClass(filteredList);
+      }
+
+      return filteredList;
+    },
+    classList() {
+      let uniqueClassItems = new Set();
+      let uniqueClassNames = new Set();
+      this.assets.forEach(asset => {
+        asset.classList.forEach(assetClass => {
+          if (!uniqueClassNames.has(assetClass.name)) {
+            uniqueClassNames.add(assetClass.name);
+            uniqueClassItems.add(assetClass);
+          }
+        });
+      });
+      return uniqueClassItems;
+    }
+  },
+  methods: {
+    filterAssetsByName() {
       return this.assets
         .filter(asset => {
           return asset.name
@@ -53,7 +84,23 @@ export default {
             .includes(this.searchName.toLowerCase());
         })
         .sort((a, b) => (a.status < b.status ? 1 : -1));
+    },
+    filterAssetsByClass(filteredList) {
+      return filteredList.filter(asset => {
+        return asset.classList.some(assetClass => {
+          //console.log(assetClass.name + " = " + this.searchClass.name);
+          return assetClass.name == this.searchClass.name;
+        });
+      });
+    },
+    logAssets(className) {
+      console.log(className);
+      console.log(className.name);
+      console.log(this.getAssetsByClassName(className));
     }
+  },
+  mounted() {
+    console.log(this.classList);
   }
 };
 </script>
