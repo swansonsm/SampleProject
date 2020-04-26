@@ -1,6 +1,7 @@
 <template>
   <div class="assets-container">
-    <Asset v-for="asset in assets"
+    <input type="text" v-model="searchName" name="search-name" placeholder="Search assets...">
+    <Asset v-for="asset in filteredAssets"
            :key="asset.assetId"
            v-bind:asset="asset"></Asset>
   </div>
@@ -18,6 +19,22 @@ export default {
     assets: {
       type: Array,
       default: () => []
+    }
+  },
+  data: function() {
+    return {
+      searchName: ""
+    };
+  },
+  computed: {
+    filteredAssets() {
+      return this.assets
+        .filter(asset => {
+          return asset.name
+            .toLowerCase()
+            .includes(this.searchName.toLowerCase());
+        })
+        .sort((a, b) => (a.status < b.status ? 1 : -1));
     }
   }
 };
